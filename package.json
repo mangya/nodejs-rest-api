@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-rest-api",
+  "version": "1.0.0",
+  "description": "A ready-to-use boilerplate for REST API Development with Node.js, Express, and PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --colors --verbose --detectOpenHandles",
+    "start": "nodemon index.js",
+    "postinstall": "cp .env-example .env"
+  },
+  "author": "Mangesh Ghadigaonkar",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22",
+    "supertest": "^6.3.3"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}
