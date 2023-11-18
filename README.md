@@ -7,35 +7,20 @@
 
 ```sh
 .
-├── app.js
-├── package.json
-├── bin
-│   └── www
-├── controllers
-│   ├── AuthController.js
-│   └── BookController.js
-├── models
-│   ├── BookModel.js
-│   └── UserModel.js
-├── routes
-│   ├── api.js
-│   ├── auth.js
-│   └── book.js
-├── middlewares
-│   ├── jwt.js
-├── helpers
-│   ├── apiResponse.js
-│   ├── constants.js
-│   ├── mailer.js
-│   └── utility.js
-├── test
-│   ├── testConfig.js
-│   ├── auth.js
-│   └── book.js
-└── public
-    ├── index.html
-    └── stylesheets
-        └── style.css
+├── app/
+│   ├── controllers/           # Controllers
+│   ├── middlewares/           # Middlewares
+│   ├── models/                # Express database models
+├── config/
+├── database/
+│   ├── migrations/            # Database migrations
+├── helpers/                   # Utility functions
+├── routes/                    # Route definitions
+├── tests/                     # Tests
+├── .env                       # API keys, passwords, and other sensitive information
+├── index.js                   # Express application
+└── package.json               # NPM Dependencies and scripts
+
 ```
 
 ## How to run
@@ -60,6 +45,8 @@ Press CTRL + C to stop the process.
 ### Creating new models
 
 If you need to add more models to the project just create a new file in `/models/` and use them in the controllers.
+
+`npx sequelize-cli model:generate --underscored --name <modelName> --attributes column1:string,column2:string,column3:string`
 
 ### Creating new routes
 

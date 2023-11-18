@@ -1,5 +1,10 @@
 const apiResponse = require('../../helpers/apiResponse');
 
+/**
+ * Home
+ * 
+ * @returns {Object}
+ */
 exports.home = [
     function (req, res, next) {
         try {

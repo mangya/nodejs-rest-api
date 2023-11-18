@@ -4,14 +4,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const homeRoutes = require('./routes/home');
+const awsRoutes = require('./routes/aws');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 
 app.use(homeRoutes);
+app.use(awsRoutes);
+app.use(authRoutes);
 
 env.config();
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //To allow cross-origin requests
