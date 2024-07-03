@@ -10,7 +10,8 @@ exports.home = [
         try {
             return apiResponse.successResponse(
                 res,
-                'Welcome'
+                'Welcome',
+                200
             );
         } catch (error) {
             return apiResponse.ErrorResponse(res, error.message);

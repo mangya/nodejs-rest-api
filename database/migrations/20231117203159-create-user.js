@@ -23,10 +23,14 @@ module.exports = {
 			password: {
 				type: Sequelize.STRING
 			},
-			is_verified: {
-				type: Sequelize.BOOLEAN,
-				defaultValue: false,
-				allowNull: false
+			email_confirmation_code: {
+				allowNull: false,
+				type: Sequelize.STRING,
+				unique: true
+			},
+			email_verified_at: {
+				allowNull: true,
+				type: Sequelize.DATE
 			},
 			created_at: {
 				allowNull: false,

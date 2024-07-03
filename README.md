@@ -48,6 +48,8 @@ If you need to add more models to the project just create a new file in `/models
 
 `npx sequelize-cli model:generate --underscored --name <modelName> --attributes column1:string,column2:string,column3:string`
 
+`npx sequelize-cli db:migrate`
+
 ### Creating new routes
 
 If you need to add more routes to the project just create a new file in `/routes/` and add it in `/routes/api.js` it will be loaded dynamically.

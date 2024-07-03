@@ -4,14 +4,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const homeRoutes = require('./routes/home');
-const awsRoutes = require('./routes/aws');
 const authRoutes = require('./routes/auth');
 
 const app = express();
-
-app.use(homeRoutes);
-app.use(awsRoutes);
-app.use(authRoutes);
 
 env.config();
 app.use(express.json());
@@ -20,6 +15,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //To allow cross-origin requests
 app.use(cors());
+app.use(homeRoutes);
+app.use(authRoutes);
 
 app.listen(process.env.PORT);
 console.log('App listening on port ' + process.env.PORT);
