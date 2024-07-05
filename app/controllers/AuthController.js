@@ -1,8 +1,10 @@
+var moment = require('moment');
 const bcrypt = require("bcrypt");
 const models = require('../models');
 const jwt = require("jsonwebtoken");
-const { body, validationResult } = require("express-validator");
+const utility = require("../../helpers/utility");
 const apiResponse = require('../../helpers/apiResponse');
+const { body, param, validationResult } = require("express-validator");
 
 /**
  * User login.
@@ -100,9 +102,8 @@ exports.register = [
             }
 			await bcrypt.hash(req.body.password, 12).then((hashedPassword) => {
 				req.body.password = hashedPassword;
+				req.body.email_confirmation_code = utility.generateRandomString(12);
 			});
-
-			req.body.email_confirmation_code = 123456789;
 
 			const user = models.User.create(req.body);
 			return apiResponse.successResponseWithData(
@@ -111,6 +112,30 @@ exports.register = [
 				user,
 				200
 			);
+		} catch (err) {
+			return apiResponse.ErrorResponse(res, err);
+		}
+	}];
+
+exports.verifyEmail = [
+	param("code").trim().notEmpty().withMessage('Invalid verification code.'),
+	async (req, res) => {
+		try {
+			const errors = validationResult(req);
+			if (!errors.isEmpty()) {
+				return apiResponse.validationErrorWithData(res, "Validation Error.", errors.array());
+			}
+			models.User.update(
+							{	
+								email_verified_at: moment().format('YYYY-MM-DD hh:mm:ss'),
+								email_confirmation_code: '',
+							},
+							{where: {email_confirmation_code: req.params.code}}
+						).then(result => {
+							return apiResponse.successResponse(res, 'Account confirmed success.', 200);
+						}).catch(err => {
+							return apiResponse.ErrorResponse(res, err);
+						});
 		} catch (err) {
 			return apiResponse.ErrorResponse(res, err);
 		}

@@ -24,7 +24,7 @@ module.exports = {
 				type: Sequelize.STRING
 			},
 			email_confirmation_code: {
-				allowNull: false,
+				allowNull: true,
 				type: Sequelize.STRING,
 				unique: true
 			},
