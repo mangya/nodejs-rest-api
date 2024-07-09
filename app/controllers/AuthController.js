@@ -1,7 +1,8 @@
-var moment = require('moment');
+const moment = require('moment');
 const bcrypt = require("bcrypt");
 const models = require('../models');
 const jwt = require("jsonwebtoken");
+const httpStatus = require('http-status');
 const utility = require("../../helpers/utility");
 const apiResponse = require('../../helpers/apiResponse');
 const { body, param, validationResult } = require("express-validator");
@@ -132,7 +133,7 @@ exports.verifyEmail = [
 							},
 							{where: {email_confirmation_code: req.params.code}}
 						).then(result => {
-							return apiResponse.successResponse(res, 'Account confirmed success.', 200);
+							return apiResponse.successResponse(res, 'Account confirmed success.');
 						}).catch(err => {
 							return apiResponse.ErrorResponse(res, err);
 						});

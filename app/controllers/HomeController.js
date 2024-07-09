@@ -11,7 +11,6 @@ exports.home = [
             return apiResponse.successResponse(
                 res,
                 'Welcome',
-                200
             );
         } catch (error) {
             return apiResponse.ErrorResponse(res, error.message);

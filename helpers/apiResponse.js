@@ -1,9 +1,11 @@
-exports.successResponse = function (res, msg, statusCode) {
+const httpStatus = require('http-status');
+
+exports.successResponse = function (res, msg) {
 	var data = {
 		status: 1,
 		message: msg
 	};
-	return res.status(statusCode).json(data);
+	return res.status(httpStatus.OK).json(data);
 };
 
 exports.successResponseWithData = function (res, msg, data, statusCode) {
@@ -20,7 +22,7 @@ exports.ErrorResponse = function (res, msg) {
 		status: 0,
 		message: msg,
 	};
-	return res.status(500).json(data);
+	return res.status(httpStatus.INTERNAL_SERVER_ERROR).json(data);
 };
 
 exports.notFoundResponse = function (res, msg) {
@@ -28,7 +30,7 @@ exports.notFoundResponse = function (res, msg) {
 		status: 0,
 		message: msg,
 	};
-	return res.status(404).json(data);
+	return res.status(httpStatus.NOT_FOUND).json(data);
 };
 
 exports.validationErrorWithData = function (res, msg, data) {
@@ -37,7 +39,7 @@ exports.validationErrorWithData = function (res, msg, data) {
 		message: msg,
 		data: data
 	};
-	return res.status(400).json(resData);
+	return res.status(httpStatus.BAD_REQUEST).json(resData);
 };
 
 exports.unauthorizedResponse = function (res, msg) {
@@ -45,5 +47,5 @@ exports.unauthorizedResponse = function (res, msg) {
 		status: 0,
 		message: msg,
 	};
-	return res.status(401).json(data);
+	return res.status(httpStatus.UNAUTHORIZED).json(data);
 };
