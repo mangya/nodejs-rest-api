@@ -47,7 +47,7 @@ npx sequelize-cli db:migrate
 ```
 
 ### Creating new routes
-If you need to add more routes to the project just create a new file in `/routes/` and add it in `/routes/api.js` it will be loaded dynamically.
+If you need to add more routes to the project just create a new file in `/routes/` and add it in `/routes/index.js` it will be loaded dynamically.
 
 ### Creating new controllers
 If you need to add more controllers to the project just create a new file in `/controllers/` and use them in the routes.
@@ -64,16 +64,24 @@ You can set custom command for test at `package.json` file inside `scripts` prop
 
 ### Creating new tests
 
-If you need to add more test cases to the project just create a new file in `/test/` and run the command.
+If you need to add more test cases to the project just create a new file in `/tests/` and run the command.
 
 ## Packages used
 * [nodemon](https://github.com/remy/nodemon) — tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
-* [bcryptjs](https://github.com/dcodeIO/bcrypt.js) — encryption library to hash a password
+* [bcrypt](https://github.com/kelektiv/node.bcrypt.js) — encryption library to hash a password
 * [body-parser](https://github.com/expressjs/body-parser) — Node.js body parsing middleware. Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
 * [dotenv](https://github.com/motdotla/dotenv) — module to load environment variables from a .env file
 * [express](https://github.com/visionmedia/express) — web application framework for node
-* [mysql2](https://github.com/sidorares/node-mysql2) — MySQL client for Node.js. Required for Sequelize. 
+* [helmet](https://github.com/helmetjs/helmet) — Help secure Express apps by setting HTTP response headers.
+* [http-status](https://github.com/adaltas/node-http-status) — Utility to interact with HTTP status codes.
+* [passport](https://github.com/jaredhanson/passport) — authentication middleware for Node.js.
+* [pg](https://github.com/brianc/node-postgres) — PostgreSQL client for Node.js. (You can remove this if using MySQL as database)
+* [pg-hstore](https://github.com/scarney81/pg-hstore) — A node package for serializing and deserializing JSON data to hstore format (You can remove this if using MySQL as database)
+* [mysql2](https://github.com/sidorares/node-mysql2) — MySQL client for Node.js. (You can remove this if using PostgreSQL as database)
 * [sequelize](https://github.com/sequelize/sequelize) — Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
+
+## Postman Collection
+available in the repo
 
 ## Contributing
 
