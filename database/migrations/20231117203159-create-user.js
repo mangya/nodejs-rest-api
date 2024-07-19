@@ -26,7 +26,6 @@ module.exports = {
 			email_confirmation_code: {
 				allowNull: true,
 				type: Sequelize.STRING,
-				unique: true
 			},
 			email_verified_at: {
 				allowNull: true,

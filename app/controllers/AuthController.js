@@ -35,9 +35,9 @@ exports.login = [
 								//Check account confirmation.
 								if(user.email_verified_at){
 									let userData = {
-										_id: user._id,
-										firstName: user.firstName,
-										lastName: user.lastName,
+										id: user.id,
+										firstName: user.first_name,
+										lastName: user.last_name,
 										email: user.email,
 									};
 									//Prepare JWT token for authentication
@@ -46,9 +46,9 @@ exports.login = [
 										expiresIn: process.env.JWT_TIMEOUT_DURATION,
 									};
 									const secret = process.env.JWT_SECRET;
-									//Generated JWT token with Payload and secret.
-									userData.token = jwt.sign(jwtPayload, secret, jwtData);
-									return apiResponse.successResponseWithData(res,"Login Success.", userData, 200);
+									//Generated JWT token with Payload and secret. 86400 secs = 1 day
+									userData.token = jwt.sign(jwtPayload, secret, {expiresIn: 86400});
+									return apiResponse.successResponseWithData(res,"Login Success.", userData, httpStatus.OK);
 								}else{
 									return apiResponse.unauthorizedResponse(res, "Account is not confirmed. Please confirm your account.");
 								}
@@ -60,7 +60,7 @@ exports.login = [
 						return apiResponse.unauthorizedResponse(res, "User not found");
 					}
 				}).catch((error) => {
-					return apiResponse.ErrorResponse(res, err);
+					return apiResponse.ErrorResponse(res, error);
 				});
 			}
 		} catch (err) {
