@@ -47,7 +47,7 @@ exports.login = [
 									};
 									const secret = process.env.JWT_SECRET;
 									//Generated JWT token with Payload and secret. 86400 secs = 1 day
-									userData.token = jwt.sign(jwtPayload, secret, {expiresIn: 86400});
+									userData.token = jwt.sign(jwtPayload, secret, jwtData);
 									return apiResponse.successResponseWithData(res,"Login Success.", userData, httpStatus.OK);
 								}else{
 									return apiResponse.unauthorizedResponse(res, "Account is not confirmed. Please confirm your account.");

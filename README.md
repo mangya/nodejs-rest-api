@@ -1,4 +1,5 @@
 # NodeJS API boilerplate
+![GitHub license](https://img.shields.io/github/license/mangya/nodejs-rest-api) ![GitHub repo size](https://img.shields.io/github/repo-size/mangya/nodejs-rest-api) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/c4792a4ff1074def98ad8e8c99c3d67e)](https://app.codacy.com/gh/mangya/nodejs-rest-api/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 A boilerplate for **Node.js** API. This boilerplate gives the minimal structure of application start with while bundling enough useful features so as to remove all those redundant tasks that can derail a project before it even really gets started. This boilerplate users Express with sequelize as ORM and MySQL/PostgreSQL as database.
 
